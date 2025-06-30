@@ -83,11 +83,11 @@ app.use((req, res, next) => {
 app.use("/listings/category", categoryRouter);
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
-app.use("/", usersRouter);
-
 app.get("/", (req, res) => {
   res.redirect("/listings");
 });
+app.use("/", usersRouter);
+
 // 404 page not found route
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page not found..."));

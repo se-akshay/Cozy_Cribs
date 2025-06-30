@@ -1,0 +1,91 @@
+<!-- Hidden checkbox for sidebar toggle state -->
+<input type="checkbox" id="sidebar-toggle" hidden />
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+        <!-- Logo with spacing -->
+        <a class="navbar-brand" href="/listings">
+            <i class="fa-solid fa-compass"></i>
+        </a>
+        <a href="/listings">
+            <span class="navbar-text mx-auto d-lg-none fw-bold">CozyCribs</span></a>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/listings">Explore</a>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <form class="d-flex" role="search" method="GET" action="/listings">
+                    <input name="search" class="form-control me-2 search-input" type="search"
+                        placeholder="Enter country" />
+                    <button class="btn search-btn" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>Search
+                    </button>
+                </form>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/listings/new">Airbnd your home</a>
+                <% if (currUser) { %>
+                    <a class="nav-link" href="/logout"><b>Log Out</b></a>
+                    <% } %>
+                        <%if(!currUser) { %>
+                            <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+                            <a class="nav-link" href="/login"><b>Log In</b></a>
+                            <% } %>
+            </div>
+        </div>
+        <!-- Custom Sidebar Toggle Button moved to right -->
+        <label for="sidebar-toggle" class="sidebar-toggle-btn">
+            <i class="fa-solid fa-bars"></i>
+        </label>
+    </div>
+</nav>
+
+<!-- Sidebar Container -->
+<div class="sidebar-container">
+    <label for="sidebar-toggle" class="close-btn">
+        <i class="fa-solid fa-times"></i>
+    </label>
+
+    <div class="sidebar-header">
+        <a href="/listings" class="sidebar-logo">
+            <i class="fa-solid fa-compass"></i>
+        </a>
+        <h2>CozyCribs</h2>
+        <p>Explore the world</p>
+    </div>
+
+    <form class="search-form" role="search" method="GET" action="/listings">
+        <input name="search" class="form-control search-input" type="search" placeholder="Enter country" />
+        <button class="search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i> Search
+        </button>
+    </form>
+
+    <div class="sidebar-nav">
+        <a class="nav-link" href="/listings">
+            <i class="fa-solid fa-compass"></i> Explore
+        </a>
+        <a class="nav-link" href="/listings/new">
+            <i class="fa-solid fa-house"></i> Airbnd your home
+        </a>
+        <% if (currUser) { %>
+            <a class="nav-link" href="/logout">
+                <i class="fa-solid fa-right-from-bracket"></i> Log out
+            </a>
+            <% } %>
+                <%if(!currUser) { %>
+                    <a class="nav-link" href="/signup">
+                        <i class="fa-solid fa-user-plus"></i> Sign Up
+                    </a>
+                    <a class="nav-link" href="/login">
+                        <i class="fa-solid fa-right-to-bracket"></i> Log In
+                    </a>
+                    <% } %>
+    </div>
+
+    <div class="sidebar-footer">
+        <p>&copy; 2023 CozyCribs</p>
+    </div>
+</div>

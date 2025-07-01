@@ -80,12 +80,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/listings/category", categoryRouter);
-app.use("/listings", listingsRouter);
-app.use("/listings/:id/reviews", reviewsRouter);
 app.get("/", (req, res) => {
   res.redirect("/listings");
 });
+
+app.use("/listings/category", categoryRouter);
+app.use("/listings", listingsRouter);
+app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", usersRouter);
 
 // 404 page not found route

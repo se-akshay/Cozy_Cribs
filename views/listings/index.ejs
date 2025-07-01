@@ -74,7 +74,7 @@
                                 &#8377;<span class="price" data-price="<%= listing.price %>">
                                     <%= listing.price.toLocaleString("en-in") %>
                                 </span>/Night
-                                <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
+                                <i class="tax-info">&nbsp;&nbsp;18% GST <strong>included</strong></i>
                             </p>
                         </div>
                     </div>
@@ -98,5 +98,28 @@
                 }
             }
         })
+
+        const taxRate = 0.18;
+        const switchBtn = document.getElementById("switchCheckDefault");
+
+        switchBtn.addEventListener("click", () => {
+            const prices = document.querySelectorAll(".price");
+            const taxInfo = document.getElementsByClassName("tax-info");
+
+            for (let i = 0; i < prices.length; i++) {
+                const basePrice = parseFloat(prices[i].dataset.price);
+
+                if (switchBtn.checked) {
+                    // Add tax
+                    const totalPrice = Math.round(basePrice * (1 + taxRate));
+                    prices[i].innerText = totalPrice.toLocaleString("en-IN");
+                    taxInfo[i].style.display = "inline";
+                } else {
+                    // Show base price
+                    prices[i].innerText = basePrice.toLocaleString("en-IN");
+                    taxInfo[i].style.display = "none";
+                }
+            }
+        });
 
     </script>
